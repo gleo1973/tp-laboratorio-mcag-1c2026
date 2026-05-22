@@ -1,4 +1,4 @@
-# tp-laboratorio-mcag-1c2026
+# Análisis y comparación de los equipos de la Copa Mundial de Fútbol 2026
 
 Exploración, análisis y presentación de datos reales asistida por IA
 
