@@ -9,21 +9,15 @@ Facultad de Ciencias Económicas · Universidad de Buenos Aires · 1er Cuatrimes
 
 | Nombre completo     | Registro | Usuario GitHub |
 | ------------------- | -------- | -------------- |
-| CARLA GARIBOTTI     |          | cargaribotti   |
-| FERNANDO MORICHETTI |          | FMorichetti    |
+| CARLA GARIBOTTI     | 921326   | cargaribotti   |
+| FERNANDO MORICHETTI | 921338   | FMorichetti    |
 | LEONARDO GOMEZ      | 921318   | gleo1973       |
-
----
-
-## Hipótesis central
-
-> _"El puntaje FIFA pre-torneo de los equipos participantes del Mundial 2026 puede explicarse, al menos parcialmente, a través de indicadores económicos (PBI, PBI per cápita) y demográficos (población, continente, idioma, densidad) de sus países de origen, siendo el valor de mercado del plantel una variable mediadora entre el desarrollo económico y el desempeño deportivo."_
 
 ---
 
 ## Pregunta de investigación
 
-¿Existe una relación estadísticamente significativa entre el nivel de desarrollo económico y demográfico de un país y el puntaje FIFA de su selección nacional, o el fútbol es uno de los pocos espacios donde la economía no determina el resultado?
+¿Existe en el puntaje FIFA y el valor de mercado del plantel pre-torneo de los equipos participantes del Mundial 2026 alguna relación con los indicadores económicos (PBI, PBI per cápita, etc) y/o demográficos (población, continente, idioma, densidad, religion) de sus países de origen?
 
 ---
 
@@ -81,6 +75,21 @@ tp-grupal-lmcag-1c2026/
    └── ...                          ← gráficos exportados desde Colab
 
 ---
+
+## Cómo reproducir el análisis
+
+1. Clonar el repositorio:    Abrí una terminal, ubicate en la carpeta donde querés descargar el proyecto, y ejecuta el comando
+
+   git clone https://github.com/usuario/tp-grupal-lmcag-1c2026.git
+
+2. Abrir 'Laboratorio_TP_2026_CopaMundial2026.ipynb' en [Google Colab](https://colab.research.google.com)
+
+3. Subir los archivos de 'datos/raw/' o montarlos desde Google Drive
+
+4. Ejecutar todas las celdas en orden (Entorno de ejecución → Ejecutar todo)
+
+**Librerías requeridas** (disponibles en Colab sin instalación adicional):
+'pandas', 'numpy', 'matplotlib', 'seaborn', 'scipy', 'sympy'
 
 
 _Laboratorio de Métodos Cuantitativos Aplicados a la Gestión · FCE UBA · 1C 2026_
