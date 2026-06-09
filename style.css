@@ -135,6 +135,8 @@ h2.sec-title{font-weight:700;text-transform:uppercase;letter-spacing:-.025em;col
   display:flex;gap:10px;align-items:baseline;font-weight:400}
 .fig-cap b{color:var(--acc);white-space:nowrap;font-weight:700}
 .chart-svg{width:100%;height:auto;display:block}
+.hist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.hist-grid{grid-template-columns:1fr}}
 .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:6px;font-size:12px;color:var(--muted);font-weight:500}
 .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .legend span{display:inline-flex;align-items:center;white-space:nowrap}

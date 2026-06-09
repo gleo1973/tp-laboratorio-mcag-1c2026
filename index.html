@@ -16,25 +16,27 @@
   <div class="lt">Armando la alineación</div>
   <div class="bar"><i></i></div>
 </div>
+
 <div class="ticker"><div class="run" id="ticker"></div></div>
-  
+
 <!-- ================= HERO ================= -->
 <header class="hero">
   <div class="grid-bg"></div>
   <div class="wrap inner">
     <div class="kicker rv">
       <span class="dot"></span>Laboratorio de Métodos Cuantitativos · FCE&nbsp;UBA
+      <span class="dim">/ Data Stories · Vol. 01</span>
     </div>
     <h1 class="title rv"><span class="l1">El precio</span><br><span class="l2">del juego</span><span class="em">Mundial 2026</span></h1>
     <p class="subtitle rv">¿Riqueza nacional o inversión deportiva? Qué explica realmente el rendimiento de las 48 selecciones clasificadas a la Copa del Mundo.</p>
     <p class="byline rv">
       Leonardo Gómez · Fernando Morichetti · Carla Garibotti<br>
-      <b>Pregunta:</b> ¿las características económicas y demográficas de un país condicionan el rendimiento de su selección nacional?
+      <b>Pregunta:</b> ¿el desarrollo económico y demográfico de un país predice el rendimiento de su selección?
     </p>
     <div class="stats rv">
       <div class="stat"><div class="num green" data-c="48">0</div><div class="lab">selecciones analizadas</div></div>
       <div class="stat"><div class="num" data-c="253">0</div><div class="lab">países en la base demográfica</div></div>
-      <div class="stat"><div class="num red" data-c="0.77" data-dec="2">0</div><div class="lab">correlación valor↔FIFA (r)</div></div>
+      <div class="stat"><div class="num red" data-c="0.76" data-dec="2">0</div><div class="lab">correlación valor↔FIFA (r)</div></div>
       <div class="stat"><div class="num blue" data-c="62.9" data-dec="1" data-suf="%">0</div><div class="lab">varianza explicada (R²)</div></div>
     </div>
     <div class="scrollcue rv">Bajá para leer el análisis <span class="ar">↓</span></div>
@@ -48,23 +50,51 @@
       <div class="sec-num">00</div>
       <div><div class="sec-tag">El planteo</div><h2 class="sec-title">Lo fijo y lo<br>modificable</h2></div>
     </div>
-    <p class="question rv">A diferencia de los clubes, las selecciones nacionales no compran talento en un mercado abierto: dependen del que cada país logra formar.</p>
+    <p class="question rv">A diferencia de los clubes, las selecciones no compran talento en un mercado abierto: dependen del que cada país logra formar.</p>
     <p class="lede rv">Las características económicas y demográficas de un país son relativamente <strong>estables en el tiempo</strong>. Si fueran el principal motor del rendimiento, el éxito de una selección estaría casi <strong>predeterminado</strong>. Pero si el rendimiento resulta independiente de esas variables estructurales, queda margen para intervenir con <strong>decisiones de gestión e inversión</strong>. Cruzamos un dataset deportivo de las 48 selecciones (Kaggle) con indicadores de 253 países (SimpleMaps) y medimos todo contra una sola vara: el <strong>puntaje FIFA previo al torneo</strong>.</p>
   </div>
 </section>
 
-<!-- ============== 01 CORRELATION ============== -->
-<section class="story acc-blue" id="s1">
+<!-- ============== 01 DISTRIBUTIONS (HISTOGRAMS) ============== -->
+<section class="story acc-red" id="sdist">
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-num">01</div>
-      <div><div class="sec-tag">Variables numéricas · Figura 1</div><h2 class="sec-title">¿Predice la<br>riqueza?</h2></div>
+      <div><div class="sec-tag">Variables numéricas · Figuras 1 a 3</div><h2 class="sec-title">Cómo se<br>reparten</h2></div>
+    </div>
+    <p class="question rv">Antes de cruzar variables: ¿cómo se distribuye cada una entre las 48 selecciones?</p>
+    <p class="lede rv">El puntaje FIFA sigue una distribución <strong>casi normal</strong> —media y mediana muy parecidas, la mayoría de los equipos cerca del promedio y pocos en los extremos—. En cambio, las variables económicas y demográficas muestran una fuerte <strong>asimetría positiva</strong>: casi todos los países se amontonan en valores bajos y unos pocos forman una larga cola hacia la derecha, con el PBI dominado por un único caso extremo. Que el puntaje esté tan repartido mientras la riqueza está tan concentrada ya sugiere que <strong>una cosa no ordena a la otra</strong>.</p>
+    <div class="chart-card rv">
+      <div id="histFifa"></div>
+      <div class="fig-cap"><b>Figura 1</b><span>Distribución del puntaje FIFA entre las 48 selecciones, con curva de densidad superpuesta.</span></div>
+    </div>
+    <div class="chart-card rv">
+      <div class="hist-grid">
+        <div id="histValor"></div><div id="histPbi"></div><div id="histPpc"></div>
+      </div>
+      <div class="fig-cap"><b>Figura 2</b><span>Distribución del valor del plantel, el PBI y el PBI per cápita de los países participantes — todas con cola pronunciada a la derecha.</span></div>
+    </div>
+    <div class="chart-card rv">
+      <div class="hist-grid">
+        <div id="histPob"></div><div id="histDens"></div><div id="histArea"></div>
+      </div>
+      <div class="fig-cap"><b>Figura 3</b><span>Distribución de la población, la densidad de población y la superficie de los países participantes.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 02 CORRELATION ============== -->
+<section class="story acc-blue" id="s1">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">02</div>
+      <div><div class="sec-tag">Variables numéricas · Figura 4</div><h2 class="sec-title">¿Predice la<br>riqueza?</h2></div>
     </div>
     <p class="question rv">¿Qué variable numérica anticipa el puntaje FIFA: el PBI del país… o el valor del plantel?</p>
-    <p class="lede rv">La matriz de correlación de Pearson da el primer hallazgo central. El puntaje FIFA <strong>casi no se mueve</strong> con los indicadores macro del país —PBI, población, densidad, PBI per cápita—. La única asociación fuerte es con el <strong>valor de mercado del plantel</strong> (r = 0,77). La prosperidad de una nación no anticipa el desempeño de su selección; sí lo hace el capital deportivo concentrado en el equipo.</p>
+    <p class="lede rv">La matriz de correlación de Pearson da el primer hallazgo central. El puntaje FIFA <strong>casi no se mueve</strong> con los indicadores macro del país —PBI, población, densidad, PBI per cápita—. La única asociación fuerte es con el <strong>valor de mercado del plantel</strong> (r = 0,76). La prosperidad de una nación no anticipa el desempeño de su selección; sí lo hace el capital deportivo concentrado en el equipo.</p>
     <div class="chart-card rv">
       <div id="heatmap"></div>
-      <div class="fig-cap"><b>Figura 1</b><span>Matriz de correlación entre el puntaje FIFA, el valor del plantel y los indicadores demográficos y económicos del país. Pasá el cursor por cada celda.</span></div>
+      <div class="fig-cap"><b>Figura 4</b><span>Matriz de correlación entre el puntaje FIFA, el valor del plantel y los indicadores demográficos y económicos del país. Pasá el cursor por cada celda.</span></div>
     </div>
   </div>
 </section>
@@ -73,18 +103,18 @@
 <section class="story acc-red" id="s2">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="sec-num">02</div>
-      <div><div class="sec-tag">Variables categóricas · Figuras 2 y 3</div><h2 class="sec-title">De dónde<br>viene el talento</h2></div>
+      <div class="sec-num">03</div>
+      <div><div class="sec-tag">Variables categóricas · Figuras 5 y 6</div><h2 class="sec-title">De dónde<br>viene el talento</h2></div>
     </div>
     <p class="question rv">Si la economía no explica el rendimiento, ¿lo hacen la geografía y la cultura?</p>
     <p class="lede rv"><strong>Sudamérica y Europa</strong> concentran los puntajes más altos; por idioma, los países de <strong>habla hispana</strong> se destacan. Ambas lecturas apuntan al mismo factor: una tradición futbolística —una "cultura del fútbol"— que no queda capturada por ninguna variable económica.</p>
     <div class="chart-card rv">
       <div id="boxCont"></div>
-      <div class="fig-cap"><b>Figura 2</b><span>Distribución del puntaje FIFA por continente de origen de la selección.</span></div>
+      <div class="fig-cap"><b>Figura 5</b><span>Distribución del puntaje FIFA por continente de origen de la selección.</span></div>
     </div>
     <div class="chart-card rv">
       <div id="boxLang"></div>
-      <div class="fig-cap"><b>Figura 3</b><span>Distribución del puntaje FIFA por idioma mayoritario (sólo idiomas hablados en 3 o más países participantes).</span></div>
+      <div class="fig-cap"><b>Figura 6</b><span>Distribución del puntaje FIFA por idioma mayoritario (sólo idiomas hablados en 3 o más países participantes).</span></div>
     </div>
   </div>
 </section>
@@ -93,19 +123,19 @@
 <section class="story acc-green" id="s3">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="sec-num">03</div>
-      <div><div class="sec-tag">Variables categóricas · Figuras 4 y 5</div><h2 class="sec-title">Fe y fútbol</h2></div>
+      <div class="sec-num">04</div>
+      <div><div class="sec-tag">Variables categóricas · Figuras 7 y 8</div><h2 class="sec-title">Fe y fútbol</h2></div>
     </div>
     <p class="question rv">¿Dice algo la religión predominante del país… o sólo refleja el continente?</p>
     <p class="lede rv">Las selecciones del Mundial son mayoritariamente de países <strong>cristianos, islámicos o sin religión principal</strong>: no hay participantes mayoritariamente budistas, hindúes ni judíos. Como los países cristianos cubren casi todo el rango, el boxplot por religión dice poco por sí solo —probablemente esta variable se solape con la del continente.</p>
     <div class="chart-card rv">
       <div class="legend" style="justify-content:center">Composición religiosa de los 48 participantes</div>
       <div id="donut"></div>
-      <div class="fig-cap"><b>Figura 5</b><span>Distribución de religiones entre los países participantes del torneo.</span></div>
+      <div class="fig-cap"><b>Figura 7</b><span>Distribución de religiones entre los países participantes del torneo.</span></div>
     </div>
     <div class="chart-card rv">
       <div id="boxRel"></div>
-      <div class="fig-cap"><b>Figura 4</b><span>Distribución del puntaje FIFA por religión principal del país de origen.</span></div>
+      <div class="fig-cap"><b>Figura 8</b><span>Distribución del puntaje FIFA por religión principal del país de origen.</span></div>
     </div>
   </div>
 </section>
@@ -114,8 +144,8 @@
 <section class="story acc-blue" id="s4">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="sec-num">04</div>
-      <div><div class="sec-tag">La inversión y su rendimiento · Figuras 6 y 7</div><h2 class="sec-title">La curva<br>del dinero</h2></div>
+      <div class="sec-num">05</div>
+      <div><div class="sec-tag">La inversión y su rendimiento · Figura 9</div><h2 class="sec-title">La curva<br>del dinero</h2></div>
     </div>
     <p class="question rv">Confirmada la relación valor↔FIFA: ¿de qué forma crece el puntaje a medida que sube la inversión?</p>
     <p class="lede rv">El diagrama de dispersión sugiere una relación <strong>cóncava</strong>, no lineal: el puntaje crece con la inversión, pero a un ritmo que se atenúa. Comparamos cuatro modelos por su coeficiente de determinación (R²). Probá cada uno y mirá cómo ajusta a la nube de puntos.</p>
@@ -123,7 +153,7 @@
       <div class="controls" id="modelCtrl"></div>
       <div class="legend" id="scatterLeg"></div>
       <div id="scatter"></div>
-      <div class="fig-cap"><b>Figura 6/7</b><span>Valor del plantel (miles de millones de €) vs. puntaje FIFA, según continente, con el modelo seleccionado superpuesto.</span></div>
+      <div class="fig-cap"><b>Figura 9</b><span>Valor del plantel (miles de millones de €) vs. puntaje FIFA, según continente, con el modelo seleccionado superpuesto.</span></div>
     </div>
     <table class="rtable rv" id="r2table"></table>
     <p class="lede small rv" style="margin-top:18px">El R² indica qué porcentaje de la variación del puntaje FIFA explica cada modelo. El <strong>ajuste cuadrático gana</strong> con 0,629: explica el 62,9 % de la varianza.</p>
@@ -134,8 +164,8 @@
 <section class="story acc-red" id="s5">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="sec-num">05</div>
-      <div><div class="sec-tag">Cálculo diferencial · Figura 8</div><h2 class="sec-title">Rendimientos<br>decrecientes</h2></div>
+      <div class="sec-num">06</div>
+      <div><div class="sec-tag">Cálculo diferencial · Figura 10</div><h2 class="sec-title">Rendimientos<br>decrecientes</h2></div>
     </div>
     <p class="question rv">Si la curva es una parábola hacia abajo, ¿existe un punto donde gastar más deja de servir?</p>
     <p class="lede rv">El modelo estimado es <strong>f(x) = −235,37·x² + 612,27·x + 1.439,44</strong>, con x el valor del plantel en miles de millones de €. Su primera derivada <strong>f′(x) = −470,74·x + 612,27</strong> mide el rendimiento marginal y es decreciente; la segunda, <strong>f″(x) = −470,74</strong>, constante y negativa, confirma concavidad uniforme. El vértice marca un <strong>umbral de eficiencia</strong>: en x* ≈ €1,30 mil millones el puntaje toca su máximo previsto (≈ 1.838 pts) y, más allá, invertir deja de traducirse en mejoras.</p>
@@ -150,7 +180,7 @@
         <input type="range" id="simRange" min="0" max="200" value="58">
         <div class="slab"><span>€0 B</span><span>vértice €1,30 B</span><span>€2,0 B</span></div>
       </div>
-      <div class="fig-cap"><b>Figura 8</b><span>Modelo cuadrático con su recta tangente. Movés el deslizador y leés el puntaje previsto y el rendimiento marginal en ese nivel de inversión.</span></div>
+      <div class="fig-cap"><b>Figura 10</b><span>Modelo cuadrático con su recta tangente. Movés el deslizador y leés el puntaje previsto y el rendimiento marginal en ese nivel de inversión.</span></div>
     </div>
     <div class="pull rv">Un plantel de €0,1 B obtiene cerca del <em>triple</em> de puntos por cada €100 M extra que uno de €1,0 B. Francia e Inglaterra ya operan sobre el techo de eficiencia.</div>
   </div>
@@ -160,15 +190,15 @@
 <section class="story acc-green" id="s6">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="sec-num">06</div>
-      <div><div class="sec-tag">Análisis de residuos · Figura 9</div><h2 class="sec-title">Quién rinde<br>de más</h2></div>
+      <div class="sec-num">07</div>
+      <div><div class="sec-tag">Análisis de residuos · Figura 11</div><h2 class="sec-title">Quién rinde<br>de más</h2></div>
     </div>
     <p class="question rv">¿Qué selecciones rinden por encima —o por debajo— de lo que su inversión anticiparía?</p>
     <p class="lede rv">El residuo es la diferencia entre el puntaje observado y el que predice el modelo. <strong>Argentina</strong> tiene el mayor residuo positivo (+161): con un plantel de €575 M —el 44 % del de Inglaterra— alcanza 1.875 pts, como si valiera casi el doble. La acompañan México, Irán, Estados Unidos y Croacia. Pero los mayores residuos negativos (Ghana, Haití, Suecia, Nueva Zelanda, Curaçao) también son planteles de valor bajo: cuando la inversión es chica, el valor de mercado casi no discrimina y el puntaje se dispersa en ambas direcciones.</p>
     <div class="chart-card rv">
       <div class="legend" id="residLeg"></div>
       <div id="resid"></div>
-      <div class="fig-cap"><b>Figura 9</b><span>Modelo cuadrático con el vértice y los residuos de los casos más destacados. Las líneas verticales miden la distancia al modelo.</span></div>
+      <div class="fig-cap"><b>Figura 11</b><span>Modelo cuadrático con el vértice y los residuos de los casos más destacados. Las líneas verticales miden la distancia al modelo.</span></div>
     </div>
   </div>
 </section>
@@ -177,7 +207,7 @@
 <section class="story acc-blue" id="concl">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="sec-num">07</div>
+      <div class="sec-num">08</div>
       <div><div class="sec-tag">Conclusiones</div><h2 class="sec-title">El veredicto</h2></div>
     </div>
     <p class="lede rv">El rendimiento deportivo es <strong>independiente de las variables económicas del país</strong>: ninguna mostró correlación relevante. Lo que sí importa se reparte en dos hallazgos.</p>
@@ -185,7 +215,7 @@
       <div class="find f1">
         <div class="ix">01</div>
         <h3>Valor del plantel</h3>
-        <p>Correlación fuerte con el puntaje FIFA (r ≈ 0,77). El mejor ajuste es <strong>cuadrático y cóncavo hacia abajo</strong>: invertir mejora el puntaje, pero cada euro adicional aporta cada vez menos. Hay un techo de eficiencia cerca de los €1,30 B.</p>
+        <p>Correlación fuerte con el puntaje FIFA (r ≈ 0,76). El mejor ajuste es <strong>cuadrático y cóncavo hacia abajo</strong>: invertir mejora el puntaje, pero cada euro adicional aporta cada vez menos. Hay un techo de eficiencia cerca de los €1,30 B.</p>
       </div>
       <div class="find f2">
         <div class="ix">02</div>
@@ -202,7 +232,7 @@
 <section class="story acc-red" id="meth">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="sec-num">08</div>
+      <div class="sec-num">09</div>
       <div><div class="sec-tag">Reflexión metodológica</div><h2 class="sec-title">Cómo se hizo</h2></div>
     </div>
     <div class="meta-grid rv">
@@ -238,7 +268,7 @@
     <div class="foot-top">
       <div>
         <div class="foot-logo">El precio del <span class="em">juego</span></div>
-        <div class="foot-sub">1.er Cuatrimestre 2026</div>
+        <div class="foot-sub">Data Stories · Vol. 01 · 1.er Cuatrimestre 2026</div>
       </div>
       <div class="foot-cols">
         <div class="foot-col">
@@ -255,8 +285,8 @@
         </div>
         <div class="foot-col">
           <h5>Stack</h5>
-          <p>HTML · CSS · JS</p>
-          <p>SVG charts</p>
+          <p>HTML · CSS · vanilla JS</p>
+          <p>SVG charts a mano, sin librerías</p>
           <a href="https://github.com/gleo1973/tp-laboratorio-mcag-1c2026" target="_blank" rel="noopener">Repositorio del TP ↗</a>
         </div>
       </div>
