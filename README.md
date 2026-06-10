@@ -4,7 +4,7 @@ Facultad de Ciencias Económicas · Universidad de Buenos Aires · 1er Cuatrimes
 
 ---
 
-## Integrantes
+# Integrantes
 
 | Nombre completo     | Registro | Usuario GitHub |
 | ------------------- | -------- | -------------- |
@@ -14,41 +14,113 @@ Facultad de Ciencias Económicas · Universidad de Buenos Aires · 1er Cuatrimes
 
 ---
 
-## Estructura del repositorio
+# Estructura del repositorio
 
 ---
 
-tp-grupal-lmcag-1c2026/
+tp-laboratorio-mcag-1c2026/
 │
-├── README.md
 ├── index.html
-├── scripts.js
+├── Laboratorio_TP_2026.ipynb
+├── README.md
+├── script.js
 ├── style.css
 │
-├── Laboratorio_TP_2026_CopaMundial2026.ipynb
-│
 ├── datos/
-│ ├── raw/
-│ │ ├── paises.csv ← dataset deportivo original con historial competitivo
-│ │ └── country_info.csv ← dataset económico/demográfico original con indicadores │ demográficos y económicos de doscientos cincuenta
-│ y tres países
-│ └── fuentes.md ← descripción de fuentes
+│ │
+│ ├── fuentes.md
+│ │
+│ └── raw/
+│ ├── country_info.csv
+│ └── paises.csv
+│
+├── imagenes/
+│ ├── ajuste_4_modelos.png
+│ ├── boxplot-piechart-religiones.png
+│ ├── boxplot-puntajefifa-continente.png
+│ ├── boxplot-puntajefifa-idioma.png
+│ ├── distribucion-puntos-fifa.png
+│ ├── heatmap-relacion-variables-numericas.png
+│ ├── histogramas_poblacion_densidad_superficie.png
+│ ├── histogramas_valor_pbi_ppc.png
+│ ├── modelo_cuadratico_vertice.png
+│ ├── scattermap-puntajefifa-precioestimado-primeros6.png
+│ ├── scattermap-puntajefifa-precioestimado.png
+│ └── segunda_derivada_cuadratico.png
 │
 ├── informe/
-│ └── Informe_TPGrupal_Mundial_2026.docx ← informe académico en PDF
+│ └── Informe_TPGrupal_Mundial_2026.docx
 │
-│
+└── presentacion/
+└── 2026_Presentacion_TPGrupal_El_precio_del_juego.pptx
+
+---
+
+# instrucciones para descargarlo
+
+---
+
+## Para Visual Studio
+
+1. Abrir una ventana de PowerShell y ejecutar:
+
+```powershell
+git clone https://github.com/gleo1973/tp-laboratorio-mcag-1c2026.git
+```
+
+2. Ingresar al directorio del proyecto:
+
+```powershell
+cd tp-laboratorio-mcag-1c2026
+```
+
+3. Abrir el proyecto con Visual Studio Code:
+
+```powershell
+code .
+```
+
+---
+
+## Para Google Colab
+
+1. Ingresar al repositorio GitHub desde la Web.
+
+2. Presionar el botón **Code**.
+
+3. Seleccionar **Download ZIP**.
+
+4. Descomprimir el archivo ZIP en la computadora.
+
+5. Ingresar a Google Colab, y Seleccionar:
+   Archivo → Subir notebook
+   Cargar el archivo `Laboratorio_TP_2026.ipynb`.
+
+Google Colab NO descarga automáticamente los archivos CSV contenidos en el repositorio.
+Además del notebook, es necesario cargar manualmente los archivos ubicados en: datos/raw/
+
+Crear la misma estructura de carpetas dentro del entorno de Colab. Esto se hace desde panel de Archivos que se encuentra a la izquierda. El panel de Archivos, se visualiza y se oculta haciento clic en el icono de carpeta que esta a la izquierda.
+Para crear una carpeta, boton derecho sobre el panel de archivos -> nueva carpeta.
+Para subir un archivo, boton derecho sobre el panel de archivos -> subir archivo.
+
+6. crear las carpetas datos/raw/
+
+7. Subir los CSV dentro de la carpeta raw.
+
+8. crear la carpeta imagenes/
+
+La estructura final debe quedar equivalente a:
+
+```text
+datos/
 └── imagenes/
-└── ... ← gráficos exportados desde Colab
+└── raw/
+    ├── country_info.csv
+    ├── paises.csv
+    └── ...
+Laboratorio_TP_2026.ipynb
+```
 
-## Cómo reproducir el análisis
+De lo contrario, las instrucciones de lectura de archivos (`*.csv`) producirán errores por rutas inexistentes. De igual forma al generar las imagenes de los graficos debe estar creada la carpeta imagenes, en donde se guardaran automaticamente al ejecutar el codigo.
 
-1. Clonar el repositorio: Abrí una terminal, ubicate en la carpeta donde querés descargar el proyecto, y ejecuta el comando
-
-   git clone https://github.com/usuario/tp-grupal-lmcag-1c2026.git
-
-2. Abrir 'Laboratorio_TP_2026_CopaMundial2026.ipynb' en [Google Colab](https://colab.research.google.com)
-
-3. Subir los archivos de 'datos/raw/' o montarlos desde Google Drive
-
-4. Ejecutar todas las celdas en orden (Entorno de ejecución → Ejecutar todo)
+---
