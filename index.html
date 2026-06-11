@@ -7,6 +7,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="alternate icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -63,7 +68,7 @@
       <div><div class="sec-tag">Variables numéricas · Figuras 1 a 3</div><h2 class="sec-title">Cómo se<br>reparten</h2></div>
     </div>
     <p class="question rv">Antes de cruzar variables: ¿cómo se distribuye cada una entre las 48 selecciones?</p>
-    <p class="lede rv">El puntaje FIFA sigue una distribución <strong>casi normal</strong> —media y mediana muy parecidas, la mayoría de los equipos cerca del promedio y pocos en los extremos—. En cambio, las variables económicas y demográficas muestran una fuerte <strong>asimetría positiva</strong>: casi todos los países se amontonan en valores bajos y unos pocos forman una larga cola hacia la derecha, con el PBI dominado por un único caso extremo. Que el puntaje esté tan repartido mientras la riqueza está tan concentrada ya sugiere que <strong>una cosa no ordena a la otra</strong>.</p>
+    <p class="lede rv">El puntaje FIFA sigue una distribución <strong>casi normal</strong>: media y mediana muy parecidas, la mayoría de los equipos cerca del promedio y pocos en los extremos. En cambio, las variables económicas y demográficas muestran una fuerte <strong>asimetría positiva</strong>: casi todos los países se amontonan en valores bajos y unos pocos forman una larga cola hacia la derecha, con el PBI dominado por un único caso extremo. Que el puntaje esté tan repartido mientras la riqueza está tan concentrada ya sugiere que <strong>una cosa no ordena a la otra</strong>.</p>
     <div class="chart-card rv">
       <div id="histFifa"></div>
       <div class="fig-cap"><b>Figura 1</b><span>Distribución del puntaje FIFA entre las 48 selecciones, con curva de densidad superpuesta.</span></div>
@@ -91,7 +96,7 @@
       <div><div class="sec-tag">Variables numéricas · Figura 4</div><h2 class="sec-title">¿Predice la<br>riqueza?</h2></div>
     </div>
     <p class="question rv">¿Qué variable numérica anticipa el puntaje FIFA: el PBI del país… o el valor del plantel?</p>
-    <p class="lede rv">La matriz de correlación de Pearson da el primer hallazgo central. El puntaje FIFA <strong>casi no se mueve</strong> con los indicadores macro del país —PBI, población, densidad, PBI per cápita—. La única asociación fuerte es con el <strong>valor de mercado del plantel</strong> (r = 0,76). La prosperidad de una nación no anticipa el desempeño de su selección; sí lo hace el capital deportivo concentrado en el equipo.</p>
+    <p class="lede rv">La matriz de correlación de Pearson da el primer hallazgo central. El puntaje FIFA <strong>casi no se mueve</strong> con los indicadores macro del país: PBI, población, densidad, PBI per cápita. La única asociación fuerte es con el <strong>valor de mercado del plantel</strong> (r = 0,76). La prosperidad de una nación no anticipa el desempeño de su selección; sí lo hace el capital deportivo concentrado en el equipo.</p>
     <div class="chart-card rv">
       <div id="heatmap"></div>
       <div class="fig-cap"><b>Figura 4</b><span>Matriz de correlación entre el puntaje FIFA, el valor del plantel y los indicadores demográficos y económicos del país. Pasá el cursor por cada celda.</span></div>
@@ -107,7 +112,7 @@
       <div><div class="sec-tag">Variables categóricas · Figuras 5 y 6</div><h2 class="sec-title">De dónde<br>viene el talento</h2></div>
     </div>
     <p class="question rv">Si la economía no explica el rendimiento, ¿lo hacen la geografía y la cultura?</p>
-    <p class="lede rv"><strong>Sudamérica y Europa</strong> concentran los puntajes más altos; por idioma, los países de <strong>habla hispana</strong> se destacan. Ambas lecturas apuntan al mismo factor: una tradición futbolística —una "cultura del fútbol"— que no queda capturada por ninguna variable económica.</p>
+    <p class="lede rv"><strong>Sudamérica y Europa</strong> concentran los puntajes más altos; por idioma, los países de habla hispana se destacan. Ambas lecturas apuntan al mismo factor: una tradición futbolística, una <strong>"cultura del fútbol"</strong> que no queda capturada por ninguna variable económica.</p>
     <div class="chart-card rv">
       <div id="boxCont"></div>
       <div class="fig-cap"><b>Figura 5</b><span>Distribución del puntaje FIFA por continente de origen de la selección.</span></div>
@@ -127,7 +132,7 @@
       <div><div class="sec-tag">Variables categóricas · Figuras 7 y 8</div><h2 class="sec-title">Fe y fútbol</h2></div>
     </div>
     <p class="question rv">¿Dice algo la religión predominante del país… o sólo refleja el continente?</p>
-    <p class="lede rv">Las selecciones del Mundial son mayoritariamente de países <strong>cristianos, islámicos o sin religión principal</strong>: no hay participantes mayoritariamente budistas, hindúes ni judíos. Como los países cristianos cubren casi todo el rango, el boxplot por religión dice poco por sí solo —probablemente esta variable se solape con la del continente.</p>
+    <p class="lede rv">Las selecciones del Mundial son mayoritariamente de países <strong>cristianos, islámicos o sin religión principal</strong>: no hay participantes mayoritariamente budistas, hindúes ni judíos. Como los países cristianos cubren casi todo el rango, el boxplot por religión dice poco por sí solo; probablemente esta variable se solape con la del continente.</p>
     <div class="chart-card rv">
       <div class="legend" style="justify-content:center">Composición religiosa de los 48 participantes</div>
       <div id="donut"></div>
@@ -220,10 +225,10 @@
       <div class="find f2">
         <div class="ix">02</div>
         <h3>Cultura y geografía</h3>
-        <p>Continente e idioma se asocian al rendimiento —<strong>Sudamérica, Europa y los países hispanohablantes</strong> tienen medianas más altas—. Probablemente capturan un mismo factor cultural subyacente que se solapa entre sí.</p>
+        <p>Continente e idioma se asocian al rendimiento: <strong>Sudamérica, Europa y los países hispanohablantes</strong> tienen medianas más altas. Probablemente capturan un mismo factor cultural subyacente que se solapa entre sí.</p>
       </div>
     </div>
-    <div class="pull rv">El rendimiento de una selección no lo determina la <em>riqueza</em> ni el tamaño del país: combina una base relativamente fija —cultural y geográfica— con un componente modificable vía <em>inversión en el plantel</em>, sujeta a rendimientos decrecientes.</div>
+    <div class="pull rv">El rendimiento de una selección no lo determina la <em>riqueza</em> ni el tamaño del país: combina una base relativamente fija (<strong>cultural y geográfica</strong>) con un componente modificable vía <em>inversión en el plantel</em>, sujeta a rendimientos decrecientes.</div>
     <p class="lede small rv">Limitación principal: el modelo explica el 62,9 % de la varianza y pierde poder en el extremo de baja inversión, donde la dispersión es alta. El puntaje FIFA, además, es una aproximación imperfecta del potencial deportivo.</p>
   </div>
 </section>
@@ -242,7 +247,7 @@
       </div>
       <div class="meta-card">
         <h4>El rol de la IA — y su límite</h4>
-        <p>La IA asistió en tareas acotadas: sugerir los modelos, calcular derivadas con SymPy e interpretarlas. El aprendizaje clave fue <i>auditar críticamente</i> sus sugerencias: al sospechar que Argentina era un outlier aislado, la IA reforzó ese sesgo con teorías; al verificarlo con los datos, resultó <strong>no</strong> ser un caso aislado.</p>
+        <p>La IA asistió en tareas acotadas: sugerir los modelos, calcular derivadas con SymPy e interpretarlas. El aprendizaje clave fue <i>auditar críticamente</i> sus sugerencias: por ejemplo, al sospechar que Argentina era un outlier aislado, la IA reforzó ese sesgo con teorías; al verificarlo con los datos, resultó <strong>no</strong> ser un caso aislado.</p>
       </div>
     </div>
     <div style="margin-top:40px">
